@@ -7,9 +7,12 @@ import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
 import io from 'socket.io-client';
 
 import * as actions from '../actions';
+import Ein from '../modules/Ein';
 import BlocksList from '../components/Dashboard/BlocksList';
 import AddBlockForm from '../components/Dashboard/AddBlockForm';
+import ConfirmMode from '../components/Dashboard/ConfirmMode';
 import PeersList from '../components/Dashboard/PeersList';
+import UserDetail from '../components/Dashboard/UserDetail';
 
 const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
 const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
@@ -31,7 +34,6 @@ switch (window.location.port) {
   // case '3003': BASE_URL = 'https://210.240.162.7:3003'; break;
   default: BASE_URL = 'wrong start script';
 };
-console.log(BASE_URL)
 const socket = io.connect(BASE_URL);
 
 class DashboardPage extends Component {
@@ -42,7 +44,10 @@ class DashboardPage extends Component {
   componentWillMount() {
     this.props.checkUserEin();
     this.props.initBlockChain();
-    this.props.initPeer();
+    this.props.initPeerIP();
+    this.props.initPeerDetail();
+    this.props.initAutoReceiver();
+    this.props.verifyUserEin(Ein.getEin());
   }
   componentDidMount() {
     socket.on('connect', () => {
@@ -59,15 +64,11 @@ class DashboardPage extends Component {
 
   renderContent = () => {
     let index = this.props.index;
-    if (index === 0) {
-      // Block List
-      return <BlocksList />;
-    } else if (index === 1) {
-      // Add Form
-      return <AddBlockForm />;
-    } else if (index === 2) {
-      // Peer List
-      return <PeersList />;
+    switch (index) {
+      case 0: return <BlocksList />; break;
+      case 1: return <ConfirmMode />; break;
+      case 2: return <PeersList />; break;
+      case 3: return <UserDetail />; break;
     }
   }
 
@@ -93,6 +94,11 @@ class DashboardPage extends Component {
               label="所有節點"
               icon={nearbyIcon}
               onClick={() => this.props.setPageIndex(2)}
+            />
+            <BottomNavigationItem
+              label="使用者資料"
+              icon={nearbyIcon}
+              onClick={() => this.props.setPageIndex(3)}
             />
           </BottomNavigation>
         </Paper>

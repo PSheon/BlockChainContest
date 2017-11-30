@@ -44,7 +44,7 @@ class Base extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ backgroundImage: 'url(https://images.pexels.com/photos/8395/lights-night-unsharp-blured.jpg?w=940&h=650&dpr=2&auto=compress&cs=tinysrgb)', minHeight: '100vh' }}>
         {this.props.children}
       </div>
     );

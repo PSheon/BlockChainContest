@@ -8,20 +8,15 @@ class PeersList extends Component {
     super(props);
 
   }
-
   componentDidMount() {
-    this.props.initPeer();
-  }
-
-  handleUpdatePeer = () => {
-    this.props.initPeer();
+    const elem = document.querySelector('.collapsible.peerDetail');
+    const instance = new window.M.Collapsible(elem);
   }
 
   render() {
     return (
-      <div>
+      <div className="container white-text center">
         <h2>目前節點列表：</h2>
-        <button className="btn" onClick={this.handleUpdatePeer}>更新列表</button>
         {this.props.peers.map((peer, i) => {
           return (
             <ul key={i}>
@@ -29,6 +24,23 @@ class PeersList extends Component {
             </ul>
           )
         })}
+        <h2>所有節點資料：</h2>
+        <ul className="collapsible grey-text peerDetail">
+          {this.props.peerDetailList.map((peerDetail, i) => {
+            return (
+              <li key={i}>
+                <div className="collapsible-header"><i className="material-icons">filter_drama</i>{peerDetail.name}</div>
+                <div className="collapsible-body white grey-text" style={{ wordWrap: 'break-word' }}>
+                  <h5>公司統編</h5>
+                  <h5>{peerDetail.GUInumber}</h5>
+                  <hr/>
+                  <h5>節點位址</h5>
+                  <h5>{peerDetail.hashkey}</h5>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
       </div>
     )
   }
@@ -36,7 +48,8 @@ class PeersList extends Component {
 
 function mapStateToProps({ peer }) {
   return {
-    peers: peer.peers
+    peers: peer.peers,
+    peerDetailList: peer.peerDetailList
   }
 }
 

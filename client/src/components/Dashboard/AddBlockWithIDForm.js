@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Input, Icon, Button } from 'react-materialize';
 import QrReader from 'react-qr-reader';
+import _ from 'lodash';
 
 import * as actions from '../../actions';
 import EIN from '../../modules/Ein';
@@ -15,6 +16,7 @@ class AddBlockForm extends Component {
       delay: 1000,
       block: {
         logisticID: '',
+        freightID: '',
         freightName: '',
         freightWeight: '',
         receiverName: '',
@@ -54,8 +56,9 @@ class AddBlockForm extends Component {
     } else if (this.props.shipperName === this.state.block.receiverName) {
       window.M.toast({ html: "出貨人與收貨人一樣" });
     } else {
-      this.props.addBlockWithOutFreightID(this.props.shipperName, this.props.address, this.state.block);
+      this.props.addBlockWithFreightID(this.props.shipperName, this.props.address, this.state.block);
     }
+
   }
 
   handleChange = (event) => {
@@ -105,6 +108,13 @@ class AddBlockForm extends Component {
                 <div className="row margin">
                   <div className="input-field col s12">
                     <i className="material-icons prefix">account_circle</i>
+                    <input value={this.state.block.freightID} onChange={this.handleChange} name="freightID" id="freightID" type="text" onChange={this.handleChange} required />
+                    <label className="active" htmlFor="freightID">物品編號</label>
+                  </div>
+                </div>
+                <div className="row margin">
+                  <div className="input-field col s12">
+                    <i className="material-icons prefix">account_circle</i>
                     <input value={this.state.block.freightName} onChange={this.handleChange} name="freightName" id="freightName" type="text" onChange={this.handleChange} required />
                     <label className="active" htmlFor="freightName">物品名稱</label>
                   </div>
@@ -112,7 +122,7 @@ class AddBlockForm extends Component {
                 <div className="row margin">
                   <div className="input-field col s12">
                     <i className="material-icons prefix">account_circle</i>
-                    <input value={this.state.block.freightWeight} onChange={this.handleChange} name="freightWeight" id="freightWeight" type="number" min={1} onChange={this.handleChange} required />
+                    <input value={this.state.block.freightWeight} onChange={this.handleChange} name="freightWeight" id="freightWeight" type="number" min="1" onChange={this.handleChange} required />
                     <label className="active" htmlFor="freightWeight">出貨重量(公斤)</label>
                   </div>
                 </div>
@@ -151,8 +161,8 @@ function mapStateToProps({ block, peer }) {
   return {
     address: block.address,
     shipperName: block.shipperName,
+    peerDetailList: peer.peerDetailList,
     autoReceiver: peer.autoReceiver,
-    peerDetailList: peer.peerDetailList
   }
 }
 

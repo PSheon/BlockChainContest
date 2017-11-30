@@ -3,7 +3,7 @@ import React from 'react';
 const GenesisBlock = ({ block }) => {
   return (
     <div className="col s12 m10 offset-m1 l10 offset-l1">
-      <div className="card" style={{ wordWrap: 'break-word' }}>
+      <div className="card" style={{ wordWrap: 'break-word', borderRadius: '40px' }}>
         <div className="card-content">
           <span className="card-title activator grey-text text-darken-4">第 {block.index} 個區塊<i className="material-icons right">more_vert</i></span>
           <h5>時間戳記： {block.timestamp} </h5>
