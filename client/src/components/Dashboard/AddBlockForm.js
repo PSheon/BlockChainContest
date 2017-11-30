@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Input, Icon } from 'react-materialize';
 
 import * as actions from '../../actions';
+import EIN from '../../modules/Ein';
 import QR from '../../components/QR';
 
 class AddBlockForm extends Component {
@@ -14,8 +15,7 @@ class AddBlockForm extends Component {
         logisticID: '',
         freightID: '',
         freightName: '',
-        freightWeight: 0,
-        shipperAddress: '',
+        freightWeight: '',
         receiverAddress: ''
       }
     }
@@ -23,7 +23,6 @@ class AddBlockForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
     this.props.addBlockChain(this.state.block);
   }
 
@@ -35,36 +34,35 @@ class AddBlockForm extends Component {
     this.setState({ block });
   }
 
+  scanLogisticID = (scanValue) => {
+
+  }
+
   render() {
     return (
       <form action="/" onSubmit={this.handleSubmit}>
         <div className="row margin">
-          <Input s={12} label="物流編號" type="text" name="logisticID" onChange={this.handleChange} required>
+          <Input s={12} label="物流編號" value={"this.state.block.logisticID"} type="text" name="logisticID" onChange={this.handleChange} required>
             <Icon>account_circle</Icon>
           </Input>
         </div>
         <div className="row margin">
-          <Input s={12} label="物品編號" type="text" name="freightID" onChange={this.handleChange} required>
+          <Input s={12} label="物品編號" value={this.state.block.freightID} type="text" name="freightID" onChange={this.handleChange} required>
             <Icon>account_circle</Icon>
           </Input>
         </div>
         <div className="row margin">
-          <Input s={12} label="物品名稱" type="text" name="freightName" onChange={this.handleChange} required>
+          <Input s={12} label="物品名稱" value={this.state.block.freightName} type="text" name="freightName" onChange={this.handleChange} required>
             <Icon>account_circle</Icon>
           </Input>
         </div>
         <div className="row margin">
-          <Input s={12} label="出貨重量" type="number" name="freightWeight" onChange={this.handleChange} required>
+          <Input s={12} label="出貨重量" value={this.state.block.freightWeight} type="number" name="freightWeight" onChange={this.handleChange} required>
             <Icon>account_circle</Icon>
           </Input>
         </div>
         <div className="row margin">
-          <Input s={12} label="出貨人位址" type="text" name="shipperAddress" onChange={this.handleChange} required>
-            <Icon>account_circle</Icon>
-          </Input>
-        </div>
-        <div className="row margin">
-          <Input s={12} label="收貨人位址" type="text" name="receiverAddress" onChange={this.handleChange} required>
+          <Input s={12} label="收貨人位址" value={this.state.block.receiverAddress} type="text" name="receiverAddress" onChange={this.handleChange} required>
             <Icon>account_circle</Icon>
           </Input>
         </div>
@@ -73,7 +71,7 @@ class AddBlockForm extends Component {
             <button type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>新增交易</button>
           </div>
         </div>
-        <QR />
+        <QR scanLogisticID={this.scanLogisticID} />
       </form>
     );
   }

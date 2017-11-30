@@ -234,7 +234,7 @@ app.get('*', (req, res) => {
 // };
 // const server = https.createServer(options, app);
 // server.listen(http_port, () => console.log('節點運行在 port : ' + http_port + '上'));
-// const io = require('socket.io')(https);
+const io = require('socket.io')(http);
 http.listen(http_port, () => console.log('節點運行在 port : ' + http_port + '上'));
 
 initP2PServer();

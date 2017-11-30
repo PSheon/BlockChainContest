@@ -46,16 +46,21 @@ export const initPeer = () => dispatch => {
 }
 
 export const addBlockChain = (blockData) => dispatch => {
-  axios({
-    method: 'post',
-    url: BASE_URL+'/mineBlock',
-    headers: { 'content-type': 'application/json' },
-    data: JSON.stringify({ block: blockData })
-  }).then(response => {
-    if (response.status === 200) {
-      dispatch({ type: types.SET_PAGE_INDEX, payload: 0 });
-    }
-  }).catch(e => { console.log(e) })
+  if (Ein.isEinExist() === true) {
+    blockData.shipperAddress = Ein.getEin().toString();
+    axios({
+      method: 'post',
+      url: BASE_URL+'/mineBlock',
+      headers: { 'content-type': 'application/json' },
+      data: JSON.stringify({ block: blockData })
+    }).then(response => {
+      if (response.status === 200) {
+        dispatch({ type: types.SET_PAGE_INDEX, payload: 0 });
+      }
+    }).catch(e => { console.log(e) })
+  } else {
+    window.M.toast({ html: 'Something wrong!' });
+  }
 };
 
 export const checkUserEin = () => dispatch => {
