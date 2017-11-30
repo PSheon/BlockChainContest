@@ -20,7 +20,8 @@ switch (window.location.port) {
   case '3003': BASE_URL = 'https://210.240.162.7:3003'; break;
   default: BASE_URL = 'wrong start script';
 };
-const socket = io(BASE_URL, {secure: true});
+// const socket = io(BASE_URL, {secure: true});
+const socket = io.connect( BASE_URL, { secure: true, reconnect: true, rejectUnauthorized : false } );
 
 class Base extends Component {
   constructor(props) {
