@@ -1,0 +1,38 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "peer1App": "npm run peer1 --prefix client",
+    "peer2App": "npm run peer2 --prefix client",
+    "peer3App": "npm run peer3 --prefix client",
+    "peer1Node": "nodemon node.js",
+    "peer2Node": "HTTP_PORT=3002 P2P_PORT=6002 PEERS=ws://localhost:6001 nodemon node.js",
+    "peer3Node": "HTTP_PORT=3003 P2P_PORT=6003 PEERS=ws://localhost:6001 nodemon node.js",
+    "peer1": "concurrently \"yarn peer1Node\" \"yarn peer1App\"",
+    "peer2": "concurrently \"yarn peer2Node\" \"yarn peer2App\"",
+    "peer3": "concurrently \"yarn peer3Node\" \"yarn peer3App\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "concurrently": "^3.5.0",
+    "cors": "^2.8.4",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "node-rsa": "^0.4.2",
+    "socket.io": "^2.0.4",
+    "validator": "^9.1.1",
+    "ws": "^3.3.0"
+  },
+  "devDependencies": {
+    "email-verify": "^0.1.1",
+    "nodemailer": "^4.3.1",
+    "nodemon": "^1.12.1",
+    "sendmail": "^1.2.0"
+  }
+}
