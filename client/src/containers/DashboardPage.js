@@ -31,7 +31,7 @@ switch (window.location.port) {
   case '3003': BASE_URL = 'https://210.240.162.7:3003'; break;
   default: BASE_URL = 'wrong start script';
 };
-const socket = io(BASE_URL);
+const socket = io(BASE_URL, {secure: true});
 
 class DashboardPage extends Component {
   constructor(props) {
