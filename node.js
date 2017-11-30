@@ -223,9 +223,9 @@ app.post('/addPeer', (req, res) => {
   connectToPeers([req.body.peer]);
   res.send();
 });
-app.get('*', (req, res) => {
-  res.sendFile(__dirname + '/client/build/index.html');
-})
+// app.get('*', (req, res) => {
+//   res.sendFile(__dirname + '/client/build/index.html');
+// })
 http.listen(http_port, () => console.log('節點運行在 port : ' + http_port + '上'));
 
 initP2PServer();

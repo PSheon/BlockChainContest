@@ -21,7 +21,7 @@ switch (window.location.port) {
   default: BASE_URL = 'wrong start script';
 };
 // const socket = io(BASE_URL, {secure: true});
-const socket = io.connect( BASE_URL, { secure: true, reconnect: true, rejectUnauthorized : false } );
+const socket = io.connect( BASE_URL, { secure: true } );
 
 class Base extends Component {
   constructor(props) {
