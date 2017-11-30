@@ -198,7 +198,7 @@ const initP2PServer = () => {
 connectToPeers(initialPeers);
 
 const app = express();
-const http = require('http').Server(app);
+// const http = require('http').Server(app);
 const https = require('https');
 const fs = require('fs');
 
@@ -232,7 +232,8 @@ const options = {
   cert: fs.readFileSync('./sslcert/fullchain.pem'),
   key: fs.readFileSync('./sslcert/privkey.pem')
 };
-https.createServer(options, app).listen(http_port);
+const server = https.createServer(options, app);
+server.listen(http_port, () => console.log('節點運行在 port : ' + http_port + '上'));
 const io = require('socket.io')(https);
 // http.listen(http_port, () => console.log('節點運行在 port : ' + http_port + '上'));
 
