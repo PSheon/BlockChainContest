@@ -199,7 +199,9 @@ connectToPeers(initialPeers);
 
 const app = express();
 const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const https = require('https');
+const fs = require('fs');
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -226,7 +228,13 @@ app.post('/addPeer', (req, res) => {
 // app.get('*', (req, res) => {
 //   res.sendFile(__dirname + '/client/build/index.html');
 // })
-http.listen(http_port, () => console.log('節點運行在 port : ' + http_port + '上'));
+const options = {
+  cert: fs.readFileSync('./sslcert/fullchain.pem'),
+  key: fs.readFileSync('./sslcert/privkey.pem')
+};
+https.createServer(options, app).listen(http_port);
+const io = require('socket.io')(https);
+// http.listen(http_port, () => console.log('節點運行在 port : ' + http_port + '上'));
 
 initP2PServer();
 
