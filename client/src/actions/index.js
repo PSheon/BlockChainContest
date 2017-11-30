@@ -7,8 +7,11 @@ import Ein from '../modules/Ein';
 let BASE_URL;
 switch (window.location.port) {
   case '8001': BASE_URL = 'http://localhost:3001'; break;
+  case '3001': BASE_URL = 'http://localhost:3001'; break;
   case '8002': BASE_URL = 'http://localhost:3002'; break;
+  case '3002': BASE_URL = 'http://localhost:3002'; break;
   case '8003': BASE_URL = 'http://localhost:3003'; break;
+  case '3003': BASE_URL = 'http://localhost:3003'; break;
   default: BASE_URL = 'wrong start script';
 };
 
