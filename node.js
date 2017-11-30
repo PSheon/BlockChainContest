@@ -198,8 +198,8 @@ const initP2PServer = () => {
 connectToPeers(initialPeers);
 
 const app = express();
-// const http = require('http').Server(app);
-const https = require('https');
+const http = require('http').Server(app);
+// const https = require('https');
 const fs = require('fs');
 
 app.use(cors());
@@ -225,17 +225,17 @@ app.post('/addPeer', (req, res) => {
   connectToPeers([req.body.peer]);
   res.send();
 });
-// app.get('*', (req, res) => {
-//   res.sendFile(__dirname + '/client/build/index.html');
-// })
-const options = {
-  cert: fs.readFileSync('./sslcert/fullchain.pem'),
-  key: fs.readFileSync('./sslcert/privkey.pem')
-};
-const server = https.createServer(options, app);
-server.listen(http_port, () => console.log('節點運行在 port : ' + http_port + '上'));
-const io = require('socket.io')(https);
-// http.listen(http_port, () => console.log('節點運行在 port : ' + http_port + '上'));
+app.get('*', (req, res) => {
+  res.sendFile(__dirname + '/client/build/index.html');
+})
+// const options = {
+//   cert: fs.readFileSync('./sslcert/fullchain.pem'),
+//   key: fs.readFileSync('./sslcert/privkey.pem')
+// };
+// const server = https.createServer(options, app);
+// server.listen(http_port, () => console.log('節點運行在 port : ' + http_port + '上'));
+// const io = require('socket.io')(https);
+http.listen(http_port, () => console.log('節點運行在 port : ' + http_port + '上'));
 
 initP2PServer();
 
