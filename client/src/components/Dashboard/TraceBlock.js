@@ -45,7 +45,7 @@ class TraceBlock extends Component {
         </div>
         <div className="row">
           {this.props.blocks.map((block, i) => {
-            if (i !== 0 && block.freightID === this.state.freightID) {
+            if (i !== 0 && block.data.freightID === this.state.freightID) {
               return <Block key={i} block={block} />
             }
           })}
