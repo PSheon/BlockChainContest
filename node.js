@@ -229,10 +229,12 @@ const options = {
 const httpsServer = https.createServer(options, app);
 httpsServer.listen(http_port, () => console.log('節點運行在 port : ' + http_port + '上'));
 const io = require('socket.io')(httpsServer);
+// const io = require('socket.io')(http);
 // http.listen(http_port, () => console.log('節點運行在 port : ' + http_port + '上'));
 
 const initP2PServer = () => {
   const server = new WebSocket.Server({ server: httpsServer, port: p2p_port });
+  // const server = new WebSocket.Server({ port: p2p_port });
   server.on('connection', ws => initConnection(ws));
   console.log('P2P 網路運行在 port : ' + p2p_port + '上');
 };

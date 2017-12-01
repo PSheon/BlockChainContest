@@ -51,21 +51,21 @@ class AddBlockForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const self = this;
-    const freightChain = _.filter(this.props.blocks, (o) => {
-      console.log(o.data.freightID);
-      console.log(self.state.block.freightID)
-      return o.data.freightID == self.state.block.freightID;
-    });
-    console.log(freightChain)
+    let isWeightValid = false;
+    let freightChain = [];
+    this.props.blocks.map((block) => {
+      if (block.data.freightID == this.state.block.freightID) {
+        freightChain.push(block.data);
+      }
+    })
     if (freightChain !== undefined) {
-      let weight = 0;
+      let originWeight = 0;
       freightChain.map((block, i) => {
-        if (i === 0) weight = block.data.freightWeight;
-        if (block.data.freightWeight > weight) {
+        if (i === 0) originWeight = block.freightWeight;
+        if (Number(this.state.block.freightWeight) > Number(originWeight)) {
           window.M.toast({ html: "重量輸入有誤！" });
-          return;
-        }
+          isWeightValid = false;
+        } else { isWeightValid = true }
       })
     }
 
@@ -83,7 +83,7 @@ class AddBlockForm extends Component {
       window.M.toast({ html: "收貨人位址打錯囉～" });
     } else if (this.props.shipperName === this.state.block.receiverName) {
       window.M.toast({ html: "出貨人與收貨人一樣" });
-    } else {
+    } else if (isWeightValid) {
       this.props.addBlockWithFreightID(this.props.shipperName, this.props.address, this.state.block);
     }
 
