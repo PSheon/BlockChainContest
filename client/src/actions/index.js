@@ -132,7 +132,7 @@ export const verifyUserEin = (ein) => dispatch => {
     }
   }).then(response => {
     if (response.status === 200) {
-      if (response.data === false) {
+      if (response.data === 'false') {
         window.M.toast({ html: '您的統一編號還沒綁定節點位置' });
       } else {
         dispatch({ type: types.SET_ADDRESS, payload: response.data.hashkey });
