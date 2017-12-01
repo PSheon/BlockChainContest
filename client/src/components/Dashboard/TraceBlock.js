@@ -4,11 +4,34 @@ import QrReader from 'react-qr-reader';
 
 import Block from '../Dashboard/Block/Block';
 
+const FREIGHTID_ = 'FreightID_';
+
 class TraceBlock extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      delay: 1000,
+      freightID: ''
+    }
+  }
+  componentDidMount() {
+    const elem = document.querySelector('.modal.scanModal');
+    new window.M.Modal(elem);
+  }
 
+  handleScan = (data) => {
+    const elem = document.querySelector('.modal.scanModal');
+    const instance = window.M.Modal.getInstance(elem);
+    if(data){
+      if (data.includes(FREIGHTID_)) {
+        instance.close();
+        this.setState({ freightID: data });
+      }
+    }
+  }
+  handleError = (err) => {
+    console.error(err)
   }
 
   render() {
@@ -19,6 +42,7 @@ class TraceBlock extends Component {
             <a className="btn waves-effect waves-light col s12 teal accent-4 modal-trigger" href="#scanModal" style={{ borderRadius: '40px' }}>ＱＲ掃描</a>
           </div>
         </div>
+        {this.state.freightID}
         <div className="row">
           {this.props.blocks.map((block, i) => {
             <Block key={i} block={block} />
