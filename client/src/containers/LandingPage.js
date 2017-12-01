@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Input, Icon } from 'react-materialize';
+import _ from 'lodash';
 
 import * as actions from '../actions';
 import Ein from '../modules/Ein';
@@ -66,12 +67,10 @@ class LandingPage extends Component {
     const ein = event.target.value;
     this.setState({ ein });
 
-    this.props.peerDetailList.map((peerDetail) => {
-      if (peerDetail.GUInumber === ein) {
-        this.setState({ peerName: peerDetail.name });
-      } else {
-        this.setState({ peerName: '' });
-      }
+    if (_.hasIn(this.props.peerDetailList, ein)) {
+      this.setState({ peerName: peerDetail.name });
+    } else {
+      this.setState({ peerName: '' });
     }
   }
 
