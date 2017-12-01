@@ -16,6 +16,7 @@ class LandingPage extends Component {
 
   componentWillMount() {
     this.props.checkUserEin();
+    this.props.initPeerDetail();
   }
 
   handleSubmit = (event) => {
@@ -26,13 +27,19 @@ class LandingPage extends Component {
     this.props.checkUserEin();
   }
 
+  renderButton = () => {
+    return (
+      <button type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>連接節點</button>
+    )
+  }
+
   render() {
     return (
       <div className="container valign-wrapper" style={{ minHeight: '100vh' }}>
         <div className="row">
           <div className="col s12 white grey-text text-darken-1" style={{ borderRadius: '40px', padding: '5vh' }}>
             <form action="/" onSubmit={this.handleSubmit}>
-              <h1>請輸入您的統一編號</h1>
+              <h3>請輸入您的統一編號與私鑰</h3>
               <div className="row margin">
                 <Input s={12} label="統一編號" type="number" name="ein" onChange={(e) => this.setState({ ein: e.target.value })} required>
                   <Icon>account_circle</Icon>
@@ -45,7 +52,7 @@ class LandingPage extends Component {
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <button type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>新增交易</button>
+                  {this.renderButton()}
                 </div>
               </div>
             </form>
