@@ -71,8 +71,7 @@ class LandingPage extends Component {
       return o.GUInumber === ein.toString();
     });
 
-    console.log(matchPeer)
-    if (matchPeer !== null) {
+    if (matchPeer !== undefined) {
       this.setState({ peerName: matchPeer.name });
     } else {
       this.setState({ peerName: '' });
