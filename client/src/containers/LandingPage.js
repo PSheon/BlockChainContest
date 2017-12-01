@@ -38,6 +38,11 @@ class LandingPage extends Component {
                   <Icon>account_circle</Icon>
                 </Input>
               </div>
+              <div className="row margin">
+                <Input s={12} label="您的個人私鑰" type="text" required>
+                  <Icon>account_circle</Icon>
+                </Input>
+              </div>
               <div className="row">
                 <div className="input-field col s12">
                   <button type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>新增交易</button>
