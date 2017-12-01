@@ -12,6 +12,7 @@ class LandingPage extends Component {
 
     this.state = {
       peerName: '',
+      privatekey: '',
       ein: ''
     }
   }
@@ -45,7 +46,7 @@ class LandingPage extends Component {
   }
 
   renderButton = () => {
-    if (this.state.peerName !== '') {
+    if (this.state.peerName !== '' && this.state.privatekey !== '') {
       return (
         <div className="row">
           <div className="input-field col s12">
@@ -92,7 +93,7 @@ class LandingPage extends Component {
                 </Input>
               </div>
               <div className="row margin">
-                <Input s={12} label="您的個人私鑰" type="text" required>
+                <Input s={12} label="您的個人私鑰" type="text" name="privatekey" onChange={this.handleChange} required>
                   <Icon>account_circle</Icon>
                 </Input>
               </div>
