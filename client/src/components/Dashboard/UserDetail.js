@@ -36,7 +36,7 @@ class UserDetail extends Component {
 function mapStateToProps({ block }) {
   return {
     address: block.address,
-    shipperName: peer.shipperName
+    shipperName: block.shipperName
   }
 }
 
