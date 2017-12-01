@@ -46,8 +46,10 @@ class AddBlockForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
+    const self = this;
     const freightChain = _.filter(this.props.blocks, (o) => {
-      return o.data.freightID == this.state.freightID;
+      console.log(self.state.freightID)
+      return o.data.freightID === self.state.freightID.toString();
     });
     console.log(freightChain)
     if (freightChain !== undefined) {
