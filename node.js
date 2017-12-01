@@ -167,7 +167,7 @@ const isValidChain = (blockchainToValidate) => {
     return false;
   }
   const tempBlocks = [blockchainToValidate[0]];
-  for (const i = 1; i < blockchainToValidate.length; i++) {
+  for (let i = 1; i < blockchainToValidate.length; i++) {
     if (isValidNewBlock(blockchainToValidate[i], tempBlocks[i - 1])) {
       tempBlocks.push(blockchainToValidate[i]);
     } else {
