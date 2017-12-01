@@ -52,7 +52,7 @@ class AddBlockForm extends Component {
     event.preventDefault();
 
     const freightChain = _.filter(this.props.blocks, (o) => {      
-      return o.data.freightID === self.state.block.freightID.toString();
+      return o.data.freightID === this.state.block.freightID.toString();
     });
     console.log(freightChain)
     if (freightChain !== undefined) {
