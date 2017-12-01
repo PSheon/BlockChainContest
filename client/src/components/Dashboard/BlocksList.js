@@ -36,7 +36,7 @@ class BlocksList extends Component {
                 return ( <Block key={i} block={block} /> )
               }
             } else {
-              if (block.shipperName === companyName || block.receiverName === companyName) {
+              if (block.shipperName === this.props.companyName || block.receiverName === this.props.companyName) {
                 return ( <Block key={i} block={block} /> )
               }
             }
