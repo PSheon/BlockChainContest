@@ -68,7 +68,7 @@ class LandingPage extends Component {
     this.setState({ ein });
 
     if (_.hasIn(this.props.peerDetailList, ein)) {
-      this.setState({ peerName: peerDetail.name });
+      this.setState({ peerName: '123' });
     } else {
       this.setState({ peerName: '' });
     }
