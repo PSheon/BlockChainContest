@@ -43,29 +43,36 @@ class LandingPage extends Component {
     }
   }
 
-  renderButton = () => (
+  renderButton = () => {
+    let isMatchPeer = false;
     this.props.peerDetailList.map((peerDetail) => {
+      console.log(peerDetail.GUInumber)
       if (peerDetail.GUInumber === this.state.ein) {
         this.setState({ peerName: peerDetail.name });
-        return (
-          <div className="row">
-            <div className="input-field col s12">
-              <button type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>連接節點</button>
-            </div>
-          </div>
-        )
+        isMatchPeer = true;
       } else {
         this.setState({ peerName: '' });
-        return (
-          <div className="row">
-            <div className="input-field col s12">
-              <button disabled type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>連接節點</button>
-            </div>
-          </div>
-        )
+        isMatchPeer = false;
       }
     })
-  )
+    if (isMatchPeer) {
+      return (
+        <div className="row">
+          <div className="input-field col s12">
+            <button type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>連接節點</button>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="row">
+          <div className="input-field col s12">
+            <button type="submit" className="btn waves-effect waves-light col s12 yellow darken-4 disabled" style={{ borderRadius: '40px' }}>連接節點</button>
+          </div>
+        </div>
+      )
+    }
+  }
 
   render() {
     return (
