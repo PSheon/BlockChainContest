@@ -45,7 +45,9 @@ class TraceBlock extends Component {
         {this.state.freightID}
         <div className="row">
           {this.props.blocks.map((block, i) => {
-            <Block key={i} block={block} />
+            if (i !== 0) {
+              return <Block key={i} block={block} />
+            }
           })}
         </div>
         <div id="scanModal" className="modal scanModal">

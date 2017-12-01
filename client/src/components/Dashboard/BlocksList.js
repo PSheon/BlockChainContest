@@ -10,10 +10,9 @@ class BlocksList extends Component {
     super(props);
 
     this.state = {
-      blocks: []
+      isRenderAllBlocks: false
     }
   }
-
   componentDidMount() {
     
   }
@@ -21,6 +20,13 @@ class BlocksList extends Component {
   render() {
     return (
       <div className="container">
+        <div className="row">
+          <div className="input-field col s12">
+            <a onClick={(e) => {this.setState({ isRenderAllBlocks: !this.state.isRenderAllBlocks })}} className="btn waves-effect waves-light col s12 teal accent-4r" style={{ borderRadius: '40px' }}>
+              {(this.state.isRenderAllBlocks)? '顯示相關區塊' : '顯示所有區塊'}
+            </a>
+          </div>
+        </div>
         <div className="row">
           {this.props.blocks.map((block, i) => {
             if (i === 0) {
