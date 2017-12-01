@@ -14,9 +14,10 @@ class LandingPage extends Component {
       ein: ''
     }
   }
-
   componentWillMount() {
     this.props.checkUserEin();
+  }
+  componentDidMount() {
     this.props.initPeerDetail();
   }
 
@@ -49,6 +50,7 @@ class LandingPage extends Component {
         <button type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>連接節點</button>
       } else {
         this.setState({ peerName: '' });
+        <button disabled type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>連接節點</button>
       }
     })
   )
