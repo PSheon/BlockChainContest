@@ -26,7 +26,8 @@ class TraceBlock extends Component {
     if(data){
       if (data.includes(FREIGHTID_)) {
         instance.close();
-        this.setState({ freightID: data });
+        console.log(data.replace(FREIGHTID_, ''))
+        this.setState({ freightID: data.replace(FREIGHTID_, '') });
       }
     }
   }
@@ -42,10 +43,9 @@ class TraceBlock extends Component {
             <a className="btn waves-effect waves-light col s12 teal accent-4 modal-trigger" href="#scanModal" style={{ borderRadius: '40px' }}>ＱＲ掃描</a>
           </div>
         </div>
-        {this.state.freightID}
         <div className="row">
           {this.props.blocks.map((block, i) => {
-            if (i !== 0) {
+            if (i !== 0 && block.freightID === this.state.freightID) {
               return <Block key={i} block={block} />
             }
           })}

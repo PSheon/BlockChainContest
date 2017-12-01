@@ -8,6 +8,7 @@ import * as actions from '../../actions';
 import EIN from '../../modules/Ein';
 
 const LOGISTIC_ = 'Logistic_';
+const FREIGHTID_ = 'FreightID_';
 class AddBlockForm extends Component {
   constructor(props) {
     super(props);
@@ -78,7 +79,11 @@ class AddBlockForm extends Component {
         let block = this.state.block;
         block.logisticID = data.replace(LOGISTIC_, '');
         this.setState({ block });
-        // window.$('#logisticID').val(data.replace(LOGISTIC_, '').toString());
+      } else if (data.includes(FREIGHTID_)) {
+        instance.close();
+        let block = this.state.block;
+        block.freightID = data.replace(FREIGHTID_, '');
+        this.setState({ block });
       }
     }
   }

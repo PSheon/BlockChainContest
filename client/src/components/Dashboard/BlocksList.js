@@ -29,14 +29,16 @@ class BlocksList extends Component {
         </div>
         <div className="row">
           {this.props.blocks.map((block, i) => {
-            if (i === 0) {
-              return (
-                <GenesisBlock key={i} block={block} />
-              )
+            if (this.state.isRenderAllBlocks) {
+              if (i === 0) { 
+                return ( <GenesisBlock key={i} block={block} /> )
+              } else {
+                return ( <Block key={i} block={block} /> )
+              }
             } else {
-              return (
-                <Block key={i} block={block} />
-              )
+              if (block.shipperName === companyName || block.receiverName === companyName) {
+                return ( <Block key={i} block={block} /> )
+              }
             }
           })}
         </div>
@@ -47,7 +49,8 @@ class BlocksList extends Component {
 
 function mapStateToProps({ block }) {
   return {
-    blocks: block.blocks
+    blocks: block.blocks,
+    companyName: block.shipperName
   }
 }
 
