@@ -84,7 +84,7 @@ class LandingPage extends Component {
               <h3>請輸入您的統一編號與私鑰</h3>
               {this.renderPeerPanel()}
               <div className="row margin">
-                <Input s={12} label="統一編號" type="number" name="ein" onChange={this.handleChange(event)} required>
+                <Input s={12} label="統一編號" type="number" name="ein" onChange={this.handleChange} required>
                   <Icon>account_circle</Icon>
                 </Input>
               </div>
