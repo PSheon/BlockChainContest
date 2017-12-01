@@ -24,7 +24,7 @@ class UserDetail extends Component {
         <div className="row">
           <div className="col s12 m8 offset-m2 white-text" style={{ wordWrap: 'break-word' }}>
             <h2>您的統一編號 {Ein.getEin()} <a className="btn waves-effect waves-light" onClick={(e) => { this.changeEin() }}>更改</a></h2>
-
+            <h2>您的公司名稱 {this.props.shipperName}</h2>
             <h2>您的節點位置 {this.props.address}</h2>
           </div>
         </div>
@@ -35,7 +35,8 @@ class UserDetail extends Component {
 
 function mapStateToProps({ block }) {
   return {
-    address: block.address
+    address: block.address,
+    shipperName: peer.shipperName
   }
 }
 

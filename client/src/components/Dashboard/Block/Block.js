@@ -1,4 +1,5 @@
 import React from 'react';
+import QRCode from 'qrcode.react';
 
 const Block = ({ block }) => {
   return (
@@ -17,6 +18,9 @@ const Block = ({ block }) => {
           <h5>前一個 HASH： {block.previousHash} </h5>
           <h5>物流編號： {block.data.logisticID}</h5>
           <h5>物品編號： {block.data.freightID}</h5>
+          <div className="center">
+            <QRCode value={block.data.freightID} />
+          </div>
           <h5>出貨人位址： {block.data.shipperAddress}</h5>
           <h5>收貨人位址： {block.data.receiverAddress}</h5>
           <h5>區塊 HASH： {block.hash}</h5>

@@ -7,6 +7,7 @@
     "crypto": "^1.0.1",
     "lodash": "^4.17.4",
     "material-ui": "^0.19.4",
+    "qrcode.react": "^0.7.2",
     "react": "15.4.0",
     "react-dom": "15.4.0",
     "react-materialize": "^1.1.0",

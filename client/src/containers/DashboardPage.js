@@ -12,6 +12,7 @@ import BlocksList from '../components/Dashboard/BlocksList';
 import AddBlockForm from '../components/Dashboard/AddBlockForm';
 import ConfirmMode from '../components/Dashboard/ConfirmMode';
 import PeersList from '../components/Dashboard/PeersList';
+import TraceBlock from '../components/Dashboard/TraceBlock';
 import UserDetail from '../components/Dashboard/UserDetail';
 
 const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
@@ -68,7 +69,8 @@ class DashboardPage extends Component {
       case 0: return <BlocksList />; break;
       case 1: return <ConfirmMode />; break;
       case 2: return <PeersList />; break;
-      case 3: return <UserDetail />; break;
+      case 3: return <TraceBlock />; break;
+      case 4: return <UserDetail />; break;
     }
   }
 
@@ -96,9 +98,14 @@ class DashboardPage extends Component {
               onClick={() => this.props.setPageIndex(2)}
             />
             <BottomNavigationItem
-              label="使用者資料"
+              label="追朔商品"
               icon={nearbyIcon}
               onClick={() => this.props.setPageIndex(3)}
+            />
+            <BottomNavigationItem
+              label="用戶資料"
+              icon={nearbyIcon}
+              onClick={() => this.props.setPageIndex(4)}
             />
           </BottomNavigation>
         </Paper>

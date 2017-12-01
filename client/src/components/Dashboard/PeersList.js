@@ -16,7 +16,7 @@ class PeersList extends Component {
   render() {
     return (
       <div className="container white-text center">
-        <h2>目前節點列表：</h2>
+        <h4>目前節點列表：</h4>
         {this.props.peers.map((peer, i) => {
           return (
             <ul key={i}>
@@ -24,7 +24,7 @@ class PeersList extends Component {
             </ul>
           )
         })}
-        <h2>所有節點資料：</h2>
+        <h4>所有節點資料：</h4>
         <ul className="collapsible grey-text peerDetail">
           {this.props.peerDetailList.map((peerDetail, i) => {
             return (
