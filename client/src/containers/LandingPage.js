@@ -59,7 +59,7 @@ class LandingPage extends Component {
         return (
           <div className="row">
             <div className="input-field col s12">
-              <button disabled type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>連接節點</>
+              <button disabled type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>連接節點</button>
             </div>
           </div>
         )
