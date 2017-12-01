@@ -47,10 +47,22 @@ class LandingPage extends Component {
     this.props.peerDetailList.map((peerDetail) => {
       if (peerDetail.GUInumber === this.state.ein) {
         this.setState({ peerName: peerDetail.name });
-        <button type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>連接節點</button>
+        return (
+          <div className="row">
+            <div className="input-field col s12">
+              <button type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>連接節點</button>
+            </div>
+          </div>
+        )
       } else {
         this.setState({ peerName: '' });
-        <button disabled type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>連接節點</button>
+        return (
+          <div className="row">
+            <div className="input-field col s12">
+              <button disabled type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>連接節點</>
+            </div>
+          </div>
+        )
       }
     })
   )
@@ -73,11 +85,7 @@ class LandingPage extends Component {
                   <Icon>account_circle</Icon>
                 </Input>
               </div>
-              <div className="row">
-                <div className="input-field col s12">
-                  {this.renderButton()}
-                </div>
-              </div>
+              {this.renderButton()}
             </form>
           </div>
         </div>
