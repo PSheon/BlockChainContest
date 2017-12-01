@@ -42,6 +42,20 @@ class AddBlockForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
+    const freightChain = _.filter(this.props.blocks, (o) => {
+      return o.data.freightID === this.state.freightID;
+    });
+    if (freightChain !== undefined) {
+      let weight = 0;
+      freightChain.map((block, i) => {
+        if (i === 0) weight = block.data.freightWeight;
+        if (block.data.freightWeight > weight) {
+          window.M.toast({ html: "重量輸入有誤！" });
+          return;
+        }
+      })
+    }
+
     let isMatch = false;
     this.props.peerDetailList.map((peerDetail) => {
       if (peerDetail.name === this.state.block.receiverName) {
@@ -164,6 +178,7 @@ class AddBlockForm extends Component {
 
 function mapStateToProps({ block, peer }) {
   return {
+    blocks: block.blocks,
     address: block.address,
     shipperName: block.shipperName,
     peerDetailList: peer.peerDetailList,

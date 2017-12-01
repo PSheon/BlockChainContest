@@ -8,7 +8,7 @@ const obj = [
 }, {
   "hashkey": "31c26bd5eba36c180087e24640eff0fcc0e83b81522e1db17c1b4642f5b06f0c",
   "name": "橙迅物流股份有限公司",
-  "GUInumber": "59117086"
+  "GUInumber": "76548764"
 }, {
   "hashkey": "a31041400e2db2e59d5dd7dcf4fccf533580358371faf184028f24f15b1abd3d",
   "name": "東泰農企業社",
@@ -16,7 +16,7 @@ const obj = [
 }
 ]
 
-const a = _.find(obj, (o) => {
+const a = _.filter(obj, (o) => {
   return o.GUInumber === '76548764'
 })
 
