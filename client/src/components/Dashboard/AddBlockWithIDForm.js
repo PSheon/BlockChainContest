@@ -45,6 +45,7 @@ class AddBlockForm extends Component {
     const freightChain = _.filter(this.props.blocks, (o) => {
       return o.data.freightID === this.state.freightID;
     });
+    console.log(freightChain)
     if (freightChain !== undefined) {
       let weight = 0;
       freightChain.map((block, i) => {
