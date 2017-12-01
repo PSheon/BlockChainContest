@@ -65,6 +65,7 @@ class LandingPage extends Component {
   handleChange = (event) => {
     event.preventDefault();
     const ein = event.target.value;
+    console.log(ein)
     this.setState({ ein });
 
     if (_.hasIn(this.props.peerDetailList, ein)) {
