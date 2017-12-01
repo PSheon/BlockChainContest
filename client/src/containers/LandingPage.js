@@ -63,7 +63,7 @@ class LandingPage extends Component {
     }
   }
 
-  handleChange = (event) => {
+  handleEinChange = (event) => {
     event.preventDefault();
     const ein = event.target.value;
     this.setState({ ein });
@@ -79,6 +79,10 @@ class LandingPage extends Component {
     }
   }
 
+  handlePKChange = (event) => {
+    this.setState({ privatekey: event.target.value });
+  }
+
   render() {
     return (
       <div className="container valign-wrapper" style={{ minHeight: '100vh' }}>
@@ -88,12 +92,12 @@ class LandingPage extends Component {
               <h3>請輸入您的統一編號與私鑰</h3>
               {this.renderPeerPanel()}
               <div className="row margin">
-                <Input s={12} label="統一編號" type="number" name="ein" onChange={this.handleChange} required>
+                <Input s={12} label="統一編號" type="number" name="ein" onChange={this.handleEinChange} required>
                   <Icon>account_circle</Icon>
                 </Input>
               </div>
               <div className="row margin">
-                <Input s={12} label="您的個人私鑰" type="text" name="privatekey" onChange={this.handleChange} required>
+                <Input s={12} label="您的個人私鑰" type="text" name="privatekey" onChange={this.handlePKChange} required>
                   <Icon>account_circle</Icon>
                 </Input>
               </div>
