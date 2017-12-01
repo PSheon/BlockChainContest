@@ -92,7 +92,7 @@ class LandingPage extends Component {
                   <Icon>account_circle</Icon>
                 </Input>
               </div>
-              {this.renderButton()}
+              {this.renderButton}
             </form>
           </div>
         </div>
