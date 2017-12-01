@@ -219,9 +219,9 @@ app.post('/addPeer', (req, res) => {
   connectToPeers([req.body.peer]);
   res.send();
 });
-app.get('*', (req, res) => {
-  res.sendFile(__dirname + '/client/build/index.html');
-})
+// app.get('*', (req, res) => {
+//   res.sendFile(__dirname + '/client/build/index.html');
+// })
 const options = {
   cert: fs.readFileSync('./sslcert/fullchain.pem'),
   key: fs.readFileSync('./sslcert/privkey.pem')
