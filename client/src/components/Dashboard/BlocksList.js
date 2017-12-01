@@ -25,9 +25,9 @@ class BlocksList extends Component {
             <a onClick={(e) => {this.setState({ isRenderAllBlocks: !this.state.isRenderAllBlocks })}} className="btn waves-effect waves-light col s12 teal accent-4r" style={{ borderRadius: '40px' }}>
               {(this.state.isRenderAllBlocks)? '顯示相關區塊' : '顯示所有區塊'}
             </a>
-            <h3>{(this.state.isRenderAllBlocks)? '所有區塊' : '相關區塊'}</h3>
           </div>
         </div>
+        <h3 className="white-text">{(this.state.isRenderAllBlocks)? '所有區塊' : '相關區塊'}</h3>
         <div className="row">
           {this.props.blocks.map((block, i) => {
             if (this.state.isRenderAllBlocks) {
