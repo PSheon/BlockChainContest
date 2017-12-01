@@ -22,10 +22,13 @@ class UserDetail extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col s12 m8 offset-m2 white-text" style={{ wordWrap: 'break-word' }}>
-            <h2>您的統一編號 {Ein.getEin()} <a className="btn waves-effect waves-light" onClick={(e) => { this.changeEin() }}>更改</a></h2>
-            <h2>您的公司名稱 {this.props.shipperName}</h2>
-            <h2>您的節點位置 {this.props.address}</h2>
+          <div className="col s12 m8 offset-m2 white-text center" style={{ wordWrap: 'break-word' }}>
+            <h5>您的統一編號：</h5>
+            <h5>{Ein.getEin()} <a className="btn waves-effect waves-light" onClick={(e) => { this.changeEin() }}>更改</a></h5>
+            <h5>您的公司名稱：</h5>
+            <h5>{this.props.shipperName}</h5>
+            <h5>您的節點位置：</h5>
+            <h5>{this.props.address}</h5>
           </div>
         </div>
       </div>

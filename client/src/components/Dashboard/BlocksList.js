@@ -27,7 +27,7 @@ class BlocksList extends Component {
             </a>
           </div>
         </div>
-        <h3 className="white-text">{(this.state.isRenderAllBlocks)? '所有區塊' : '相關區塊'}</h3>
+        <h3 className="white-text center">{(this.state.isRenderAllBlocks)? '所有區塊' : '相關區塊'}</h3>
         <div className="row">
           {this.props.blocks.map((block, i) => {
             if (this.state.isRenderAllBlocks) {
