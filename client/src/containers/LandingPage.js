@@ -68,7 +68,7 @@ class LandingPage extends Component {
     this.setState({ ein });
 
     const matchPeer = _.find(this.props.peerDetailList, (o) => {
-      return (o.GUInumber === ein.toString());
+      return o.GUInumber === ein.toString();
     });
 
     console.log(matchPeer)
