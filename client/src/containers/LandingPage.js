@@ -65,13 +65,13 @@ class LandingPage extends Component {
   handleChange = (event) => {
     event.preventDefault();
     const ein = event.target.value;
-    console.log(ein)
     this.setState({ ein });
 
     const matchPeer = _.find(this.props.peerDetailList, (o) => {
       return (o.GUInumber === ein.toString());
     });
 
+    console.log(matchPeer)
     if (matchPeer !== null) {
       this.setState({ peerName: matchPeer.name });
     } else {
