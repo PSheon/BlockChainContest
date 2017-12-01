@@ -201,7 +201,7 @@ app.use(bodyParser.json());
 
 app.use(express.static('./client/build'));
 
-app.get('/blocks', (req, res) => res.send(JSON.stringify(blockchain)));
+app.post('/blocks', (req, res) => res.send(JSON.stringify(blockchain)));
 app.post('/mineBlock', (req, res) => {
   if (isValidBlockFormat(req.body.block)) {
     let newBlock = generateNextBlock(req.body.block);
@@ -212,16 +212,16 @@ app.post('/mineBlock', (req, res) => {
     res.send();
   }
 });
-app.get('/peers', (req, res) => {
+app.post('/peers', (req, res) => {
   res.send(sockets.map(s => s._socket.remoteAddress + ':' + s._socket.remotePort));
 });
 app.post('/addPeer', (req, res) => {
   connectToPeers([req.body.peer]);
   res.send();
 });
-// app.get('*', (req, res) => {
-//   res.sendFile(__dirname + '/client/build/index.html');
-// })
+app.get('*', (req, res) => {
+  res.sendFile(__dirname + '/client/build/index.html');
+})
 const options = {
   cert: fs.readFileSync('./sslcert/fullchain.pem'),
   key: fs.readFileSync('./sslcert/privkey.pem')

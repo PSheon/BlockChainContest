@@ -44,7 +44,7 @@ export const initAutoReceiver = () => dispatch => {
 
 export const initBlockChain = () => dispatch => {
   axios({
-    method: 'get',
+    method: 'post',
     url: BASE_URL+'/blocks'
   }).then(response => {
     if (response.status === 200) {
@@ -54,7 +54,7 @@ export const initBlockChain = () => dispatch => {
 }
 
 export const initPeerIP = () => dispatch => {
-  axios.get(BASE_URL + '/peers')
+  axios.post(BASE_URL + '/peers')
   .then(response => {
     if (response.status === 200) {
       dispatch({ type: types.SET_PEER, payload: response.data });
