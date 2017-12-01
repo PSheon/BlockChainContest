@@ -53,8 +53,8 @@ class AddBlockForm extends Component {
 
     const self = this;
     const freightChain = _.filter(this.props.blocks, (o) => {
-      console.log(o.data.freightID.toString());
-      console.log(self.state.block.freightID.toString())
+      console.log(o.data.freightID);
+      console.log(self.state.block.freightID)
       return o.data.freightID == self.state.block.freightID;
     });
     console.log(freightChain)
