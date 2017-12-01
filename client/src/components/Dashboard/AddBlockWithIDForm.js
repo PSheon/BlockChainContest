@@ -28,8 +28,12 @@ class AddBlockForm extends Component {
   componentDidMount() {
     const elem = document.querySelector('.modal.scanModal');
     new window.M.Modal(elem);
-    const autocomplete = document.querySelector('.autocomplete.receiverName');
-    const istance = new window.M.Autocomplete(autocomplete, {
+    const autocompleteReceiverName = document.querySelector('.autocomplete.receiverName');
+    const autocompleteFreightName = document.querySelector('.autocomplete.receiverName');
+    new window.M.Autocomplete(autocompleteFreightName, {
+      data: { '蘋果': null, '香蕉': null, '小黃瓜': null}
+    });
+    const istance = new window.M.Autocomplete(autocompleteReceiverName, {
       data: this.props.autoReceiver,
       onAutocomplete: (data) => {
         let block = this.state.block;
@@ -135,7 +139,7 @@ class AddBlockForm extends Component {
                 <div className="row margin">
                   <div className="input-field col s12">
                     <i className="material-icons prefix">account_circle</i>
-                    <input value={this.state.block.freightName} onChange={this.handleChange} name="freightName" id="freightName" type="text" onChange={this.handleChange} required />
+                    <input className="autocomplete freightName" value={this.state.block.freightName} onChange={this.handleChange} name="freightName" id="freightName" type="text" onChange={this.handleChange} required />
                     <label className="active" htmlFor="freightName">物品名稱</label>
                   </div>
                 </div>
