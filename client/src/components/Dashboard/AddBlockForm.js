@@ -28,7 +28,12 @@ class AddBlockForm extends Component {
     const autocompleteReceiverName = document.querySelector('.autocomplete.receiverName');
     const autocompleteFreightName = document.querySelector('.autocomplete.freightName');
     new window.M.Autocomplete(autocompleteFreightName, {
-      data: { '蘋果': null, '香蕉': null, '小黃瓜': null}
+      data: { '蘋果': null, '香蕉': null, '小黃瓜': null},
+      onAutocomplete: (data) => {
+        let block = this.state.block;
+        block.freightName = data;
+        this.setState({ block })
+      }
     });
     const istance = new window.M.Autocomplete(autocompleteReceiverName, {
       data: this.props.autoReceiver,
