@@ -44,33 +44,34 @@ class LandingPage extends Component {
   }
 
   renderButton = () => {
-    let isMatchPeer = false;
-    this.props.peerDetailList.map((peerDetail) => {
-      console.log(peerDetail.GUInumber)
-      // if (peerDetail.GUInumber === this.state.ein) {
-      //   this.setState({ peerName: peerDetail.name });
-      //   isMatchPeer = true;
-      // } else {
-      //   this.setState({ peerName: '' });
-      //   isMatchPeer = false;
-      // }
-    })
-    if (isMatchPeer) {
+    if (this.state.peerName !== '') {
       return (
         <div className="row">
           <div className="input-field col s12">
             <button type="submit" className="btn waves-effect waves-light col s12 yellow darken-4" style={{ borderRadius: '40px' }}>連接節點</button>
           </div>
-        </div>
-      )
+        </div>)
     } else {
       return (
         <div className="row">
           <div className="input-field col s12">
             <button type="submit" className="btn waves-effect waves-light col s12 yellow darken-4 disabled" style={{ borderRadius: '40px' }}>連接節點</button>
           </div>
-        </div>
-      )
+        </div>)
+    }
+  }
+
+  handleChange = (event) => {
+    event.preventDefault();
+    const ein = event.target.value;
+    this.setState({ ein });
+
+    this.props.peerDetailList.map((peerDetail) => {
+      if (peerDetail.GUInumber === ein) {
+        this.setState({ peerName: peerDetail.name });
+      } else {
+        this.setState({ peerName: '' });
+      }
     }
   }
 
@@ -83,7 +84,7 @@ class LandingPage extends Component {
               <h3>請輸入您的統一編號與私鑰</h3>
               {this.renderPeerPanel()}
               <div className="row margin">
-                <Input s={12} label="統一編號" type="number" name="ein" onChange={(e) => this.setState({ ein: e.target.value })} required>
+                <Input s={12} label="統一編號" type="number" name="ein" onChange={this.handleChange(event)} required>
                   <Icon>account_circle</Icon>
                 </Input>
               </div>
@@ -92,7 +93,7 @@ class LandingPage extends Component {
                   <Icon>account_circle</Icon>
                 </Input>
               </div>
-              {this.renderButton}
+              {this.renderButton()}
             </form>
           </div>
         </div>
