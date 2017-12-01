@@ -47,13 +47,13 @@ class LandingPage extends Component {
     let isMatchPeer = false;
     this.props.peerDetailList.map((peerDetail) => {
       console.log(peerDetail.GUInumber)
-      if (peerDetail.GUInumber === this.state.ein) {
-        this.setState({ peerName: peerDetail.name });
-        isMatchPeer = true;
-      } else {
-        this.setState({ peerName: '' });
-        isMatchPeer = false;
-      }
+      // if (peerDetail.GUInumber === this.state.ein) {
+      //   this.setState({ peerName: peerDetail.name });
+      //   isMatchPeer = true;
+      // } else {
+      //   this.setState({ peerName: '' });
+      //   isMatchPeer = false;
+      // }
     })
     if (isMatchPeer) {
       return (
