@@ -40,8 +40,4 @@ let obj = [
     }
   ];
 
-const a = _.filter(obj, (o) => {
-return o.data.freightID == 'cb79d8e4-c6c1-4983-9c06-f09044ba7b55'
-})
-
-console.log(a)
+  

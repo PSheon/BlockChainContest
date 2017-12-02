@@ -77,7 +77,7 @@ class DashboardPage extends Component {
   render() {
     return (
       <div>
-        <div style={{ maxHeight: '90vh', overflow: 'scroll' }}>
+        <div style={{ minHeight: '90vh', maxHeight: '95vh', overflow: 'scroll' }}>
           {this.renderContent()}
         </div>
         <Paper zDepth={1}>
