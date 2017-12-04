@@ -40,4 +40,4 @@ let obj = [
     }
   ];
 
-  console.log('testing again')
+  console.log('testing again when closed')
