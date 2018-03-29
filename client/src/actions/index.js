@@ -16,12 +16,12 @@ switch (window.location.port) {
   // case '3002': BASE_URL = 'http://localhost:3002'; break;
   // case '8003': BASE_URL = 'http://localhost:3003'; break;
   // case '3003': BASE_URL = 'http://localhost:3003'; break;
-  case '8001': BASE_URL = 'https://chengxun.com.tw:3001'; break;
-  case '3001': BASE_URL = 'https://chengxun.com.tw:3001'; break;
-  case '8002': BASE_URL = 'https://chengxun.com.tw:3002'; break;
-  case '3002': BASE_URL = 'https://chengxun.com.tw:3002'; break;
-  case '8003': BASE_URL = 'https://chengxun.com.tw:3003'; break;
-  case '3003': BASE_URL = 'https://chengxun.com.tw:3003'; break;
+  case '8001': BASE_URL = 'https://volunteer.com.tw:3001'; break;
+  case '3001': BASE_URL = 'https://volunteer.com.tw:3001'; break;
+  case '8002': BASE_URL = 'https://volunteer.com.tw:3002'; break;
+  case '3002': BASE_URL = 'https://volunteer.com.tw:3002'; break;
+  case '8003': BASE_URL = 'https://volunteer.com.tw:3003'; break;
+  case '3003': BASE_URL = 'https://volunteer.com.tw:3003'; break;
   default: BASE_URL = 'wrong start script';
 };
 
@@ -32,7 +32,7 @@ export const setPageIndex = (index) => dispatch => {
 export const initAutoReceiver = () => dispatch => {
   axios({
     method: 'get',
-    url: 'https://chengxun.com.tw/comparelist'
+    url: 'https://volunteer.com.tw/comparelist'
   }).then(response => {
     if (response.status === 200) {
       dispatch({ type: types.INIT_AUTO_RECEIVER, payload: response.data });
@@ -63,7 +63,7 @@ export const initPeerIP = () => dispatch => {
 }
 
 export const initPeerDetail = () => dispatch => {
-  axios.get('https://chengxun.com.tw/alllist')
+  axios.get('https://volunteer.com.tw/alllist')
   .then(response => {
     if (response.status === 200) {
       dispatch({ type: types.SET_PEER_DETAIL, payload: response.data.list });
@@ -126,7 +126,7 @@ export const verifyUserEin = (ein) => dispatch => {
   const hashedKey = crypto.createHmac('sha256', SECRET_KEY).update(ein.toString()).digest('hex');
   axios({
     method: 'get',
-    url: 'https://chengxun.com.tw/checkhashlist',
+    url: 'https://volunteer.com.tw/checkhashlist',
     params: {
       hashkey: hashedKey
     }
